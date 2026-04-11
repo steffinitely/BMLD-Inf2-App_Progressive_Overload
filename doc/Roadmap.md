@@ -12,6 +12,7 @@ Jede Version fügt genau **eine neue Funktion** hinzu und die App ist zu jedem Z
 - Nutzer kann sich mit Username und Passwort einloggen
 - Auswahl zwischen Oberkörper und Unterkörper
 - Anzeige von Übungen (z. B. Übung 1, Übung 2, Übung 3)
+- Info Screen: Was genau ist Progressive Overload
 
 ---
 
