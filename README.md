@@ -4,7 +4,7 @@ st.title("Progressive Overload App")
 
 st.markdown("""
 Diese App wurde von folgenden Personen entwickelt:
-- Leah Talary (talar)
+- Leah Talary (talarlea@studenst.zhaw.ch)
 - Lena Seger (segerlen@students.zhaw.ch)
 - Meret Brand (brandmer@students.zhaw.ch)
 - Neuhof Steffi (bierist3@students.zhaw.ch)
