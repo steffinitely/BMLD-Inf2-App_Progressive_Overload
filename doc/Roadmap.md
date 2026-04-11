@@ -5,7 +5,7 @@ Jede Version fügt genau **eine neue Funktion** hinzu und die App ist zu jedem Z
 
 ---
 
-## V0.1 – Grundstruktur
+## V1.0 – Grundstruktur
 - Leere Streamlit-App mit Titel „Progressive Overload“
 - Startseite mit Buttons für Login und Sign Up
 - Nutzer kann Name, E-Mail und Passwort eingeben
