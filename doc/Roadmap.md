@@ -17,28 +17,24 @@ Jede Version fügt genau **eine neue Funktion** hinzu und die App ist zu jedem Z
 
 ## V2.0 – Trainingsberechnung
 - Berechnung des optimalen Trainingsgewichts basierend auf Progressive Overload
-
----
-
-## V3.0 – Anzeige Trainingsvorschlag
 - Anzeige von Sätzen, Wiederholungen und Gewicht (z. B. 4x8, 25kg)
 
 ---
 
-## V4.0 – Speicherung während der Session
+## V3.0 – Speicherung während der Session
 - Trainingsdaten werden temporär gespeichert
 
 ---
 
-## V5.0 – Trainingsstatistik
+## V4.0 – Trainingsstatistik
 - Anzeige von Trainingsverlauf (Tabelle und einfache Grafik)
 
 ---
 
-## V6.0 – Workout speichern
+## V5.0 – Workout speichern
 - Button „Save Workout“ speichert Training dauerhaft
 
 ---
 
-## V7.0 – Verbesserte Benutzeroberfläche
+## V6.0 – Verbesserte Benutzeroberfläche
 - Optimierung von Design und Benutzerfreundlichkeit
