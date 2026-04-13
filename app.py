@@ -71,38 +71,47 @@ elif st.session_state.page == "login":
 # INFO SCREEN
 # ------------------------
 elif st.session_state.page == "info":
-    st.title("Was ist Progressive Overload?")
+    st.title("📘 Was ist Progressive Overload?")
 
-    st.write("""
-    Progressive Overload bedeutet, dass du dein Training über Zeit gezielt steigerst, um Muskelwachstum zu erreichen. 
-    Dein Körper passt sich nur dann an, wenn er regelmäßig stärker gefordert wird als zuvor.
-    Das kann auf verschiedene Arten passieren:
+    st.markdown("""
+**Progressive Overload** bedeutet, dass du dein Training systematisch steigerst, um stärker zu werden und Fortschritt zu erzielen.
 
-    - mehr Gewicht
-    - mehr Wiederholungen
-    - mehr Sätze
+Ohne Steigerung passt sich dein Körper nicht an.
+""")
 
-    Das Ziel ist es, den Muskel kontinuierlich zu überlasten, damit er sich anpasst und wächst.
-             
-    Für effektiven Muskelaufbau ist es wichtig, im sogenannten Hypertrophie-Bereich zu trainieren.
-    Dieser liegt typischerweise bei:
+    st.info("""
+- mehr Gewicht  
+- mehr Wiederholungen  
+- mehr Sätze  
+""")
 
-    - ca. 6–12 Wiederholungen
-    - kontrollierte Ausführung
-    -Training nahe am Muskelversagen
+    st.markdown("""
+### 🔬 Wie funktioniert das?
 
-    Wenn du diesen Bereich erreichst und dich regelmäßig steigerst (z. B. mehr Gewicht), setzt du den optimalen Reiz für Muskelwachstum.
-             
-    Ziel der App: 
+Effektives Training basiert auf messbarer Leistung.
 
-    Unser Ziel ist es, dass du:
+Wenn du deine Gewichte trackst und dich regelmäßig steigerst, setzt du den optimalen Reiz für Muskelaufbau.
+""")
 
-    immer im optimalen Hypertrophie-Bereich trainierst
-    dich automatisch progressiv steigerst
-    keinen Fortschritt mehr dem Zufall überlässt
+    st.markdown("""
+### 🚀 Wie hilft dir die App?
+""")
 
-👉 So erreichst du maximal effektiven Muskelaufbau – einfach und strukturiert.
-    """)
+    st.info("""
+- speichert dein letztes Training  
+- berechnet dein nächstes Gewicht (+2.5%)  
+- zeigt dir deinen Fortschritt  
+""")
+
+    st.markdown("""
+### 🎯 Ziel
+
+- Kein Rechnen mehr  
+- Kein Raten mehr  
+- Klare Progression  
+
+👉 Einfach strukturiert trainieren und stärker werden.
+""")
 
     st.button("Zurück", on_click=go_to, args=("home",))
 
