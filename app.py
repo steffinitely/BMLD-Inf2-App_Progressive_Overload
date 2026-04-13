@@ -74,8 +74,34 @@ elif st.session_state.page == "info":
     st.title("Was ist Progressive Overload?")
 
     st.write("""
-    Progressive Overload bedeutet, dass du dein Training kontinuierlich steigerst,
-    um stärker zu werden. Das kann durch mehr Gewicht, mehr Wiederholungen oder mehr Sätze passieren.
+    Progressive Overload bedeutet, dass du dein Training über Zeit gezielt steigerst, um Muskelwachstum zu erreichen. 
+    Dein Körper passt sich nur dann an, wenn er regelmäßig stärker gefordert wird als zuvor.
+    Das kann auf verschiedene Arten passieren:
+
+    - mehr Gewicht
+    - mehr Wiederholungen
+    - mehr Sätze
+
+    Das Ziel ist es, den Muskel kontinuierlich zu überlasten, damit er sich anpasst und wächst.
+             
+    Für effektiven Muskelaufbau ist es wichtig, im sogenannten Hypertrophie-Bereich zu trainieren.
+    Dieser liegt typischerweise bei:
+
+    - ca. 6–12 Wiederholungen
+    - kontrollierte Ausführung
+    -Training nahe am Muskelversagen
+
+    Wenn du diesen Bereich erreichst und dich regelmäßig steigerst (z. B. mehr Gewicht), setzt du den optimalen Reiz für Muskelwachstum.
+             
+    Ziel der App: 
+
+    Unser Ziel ist es, dass du:
+
+    immer im optimalen Hypertrophie-Bereich trainierst
+    dich automatisch progressiv steigerst
+    keinen Fortschritt mehr dem Zufall überlässt
+
+👉 So erreichst du maximal effektiven Muskelaufbau – einfach und strukturiert.
     """)
 
     st.button("Zurück", on_click=go_to, args=("home",))
