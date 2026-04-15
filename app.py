@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Meine App", page_icon=":material/home:")
 
-pg_home = st.Page("views/home.py", title="Home", icon=":material/home:", default=True)
+pg_homepage = st.Page("views/homepage.py", title="Home", icon=":material/home:", default=True)
 pg_login= st.Page("views/login.py", title="Login", icon=":material/info:")
 pg_signup = st.Page("views/signup.py", title="Sign Up", icon=":material/info:")
 pg_workout_selection = st.Page("views/workout_selection.py", title="Workout Auswahl", icon=":material/info:")
