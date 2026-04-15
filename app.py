@@ -29,7 +29,7 @@ pg_lower_e3_stat = st.Page("views/lower_e3_stat.py", title="Unterkörper Übung 
 
 
 
-pg = st.navigation([pg_home, pg_login])
+pg = st.navigation([pg_homepage, pg_login, pg_signup, pg_workout_selection, pg_upper_exercise_selection, pg_lower_exercise_selection, pg_upper_e1, pg_upper_e1_weight, pg_upper_e1_stat, pg_upper_e2, pg_upper_e2_weight, pg_upper_e2_stat, pg_upper_e3, pg_upper_e3_weight, pg_upper_e3_stat, pg_lower_e1, pg_lower_e1_weight, pg_lower_e1_stat, pg_lower_e2, pg_lower_e2_weight, pg_lower_e2_stat, pg_lower_e3, pg_lower_e3_weight, pg_lower_e3_stat])
 pg.run()
 
 # app.py
