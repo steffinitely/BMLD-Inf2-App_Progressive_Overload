@@ -29,7 +29,7 @@ if st.session_state.page == "home":
     st.button("Log In", on_click=go_to, args=("login",))
     st.button("Sign Up", on_click=go_to, args=("signup",))
 
-    # ------------------------
+# ------------------------
 # Home SCREEN
 # ------------------------
     st.title("📘 Was ist Progressive Overload?")
@@ -73,17 +73,6 @@ Wenn du deine Gewichte trackst und dich regelmäßig steigerst, setzt du den opt
 
 👉 Einfach strukturiert trainieren und stärker werden.
 """)
-
-
-# ------------------------
-# SPLIT AUSWAHL
-# ------------------------
-elif st.session_state.page == "split":
-    st.title("Wähle deinen Split")
-
-    st.button("Oberkörper", on_click=go_to, args=("oberkoerper",))
-    st.button("Unterkörper", on_click=go_to, args=("unterkoerper",))
-
 # ------------------------
 # ÜBUNGSLISTE
 # ------------------------
