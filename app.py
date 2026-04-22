@@ -15,10 +15,6 @@ if 'data_df' not in st.session_state:
         initial_value=pd.DataFrame(),
         parse_dates=['timestamp'])
 
-def load_user_data(self, file_name, initial_value=None, **load_args):
-
-def save_app_data(self, data, file_name):
-
 
 pg_homepage = st.Page("views/homepage.py", title="Home", icon=":material/home:", default=True)
 pg_workout_selection = st.Page("views/workout_selection.py", title="Workout Auswahl", icon=":material/info:")
