@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-from functions.progression import calculate_progression, calculate_training_volume, get_last_entry
+from functions.progression import calculate_progression, calculate_training_volume, get_last_entry, get_suggested_weight
 from datetime import datetime
 
 if "training_mode" not in st.session_state:
@@ -72,9 +72,13 @@ if not st.session_state.training_mode:
 else:
     st.subheader("➕ Neues Training erfassen")
     
+    # Berechne vorgeschlagenes Gewicht basierend auf letztem Training
+    data_df = st.session_state.get('data_df', pd.DataFrame())
+    suggested_weight = get_suggested_weight("Lat Pulldown", data_df)
+    
     col1, col2, col3 = st.columns(3)
     with col1:
-        weight = st.number_input("Gewicht (kg)", min_value=0.0, step=0.5, format="%.1f")
+        weight = st.number_input("Gewicht (kg)", min_value=0.0, step=0.5, format="%.1f", value=suggested_weight)
     with col2:
         reps = st.number_input("Wiederholungen", min_value=1, step=1)
     with col3:
