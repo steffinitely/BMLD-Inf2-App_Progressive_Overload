@@ -22,5 +22,5 @@ with col2:
 
 st.divider()
 
-if st.button("← Zurück zur Startseite", use_container_width=True):
-    st.switch_page("views/homepage.py")
+if st.button("← Zurück zum Split", use_container_width=True):
+    st.switch_page("views/workout_selection.py")
