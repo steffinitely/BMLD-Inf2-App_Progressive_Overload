@@ -1,7 +1,7 @@
 import streamlit as st
 from functions.progression import calculate_progression, calculate_training_volume, get_last_entry
 
-st.set_page_config(page_title="Progressive Overload")
+#st.set_page_config(page_title="Progressive Overload")
 
 # ------------------------
 # Session State initialisieren
@@ -42,6 +42,10 @@ elif st.session_state.page == "signup":
         st.success("Account erstellt (Dummy)")
         go_to("login")
 
+    if st.button("⬅️ Zurück zur Home"):
+         go_to("home")
+
+
 # ------------------------
 # LOGIN
 # ------------------------
@@ -54,6 +58,10 @@ elif st.session_state.page == "login":
     if st.button("Einloggen"):
         st.success("Erfolgreich eingeloggt (Dummy)")
         go_to("split")
+    
+    if st.button("⬅️ Zurück zur Home"):
+        go_to("home")
+
 
 # ------------------------
 # INFO SCREEN
