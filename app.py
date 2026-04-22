@@ -21,16 +21,16 @@ pg_workout_selection = st.Page("views/workout_selection.py", title="Workout Ausw
 pg_upper_exercise_selection = st.Page("views/upper_exercise_selection.py", title="Oberkörper Übungen", icon=":material/info:")
 pg_lower_exercise_selection = st.Page("views/lower_exercise_selection.py", title="Unterkörper Übungen", icon=":material/info:")
 pg_barbell_benchpress = st.Page("views/barbell_benchpress.py", title="Barbell Benchpress", icon=":material/info:")
-pg_barbell_shoulderpresse = st.Page("views/barbell_shoulderpress.py", title="Barbell Shoulder Press", icon=":material/info:")
-pg_latpulldown = st.Page("views/latpulldown.py", title="Lat Pulldown", icon=":material/info:")
-pg_deadlift = st.Page("views/deadlift.py", title="Deadlift", icon=":material/info:")
+pg_dumbbell_shoulderpress = st.Page("views/dumbbell_shoulderpress.py", title="Dumbbell Shoulder Press", icon=":material/info:")
+pg_latpulldown = st.Page("views/latpulldownmachine.py", title="Lat Pulldown", icon=":material/info:")
+pg_barbell_deadlift = st.Page("views/barbell_deadlift.py", title="Barbell Deadlift", icon=":material/info:")
 pg_barbell_squat = st.Page("views/barbell_squat.py", title="Barbell Squat", icon=":material/info:")
-pg_dumbbell_bulgariansquat = st.Page("views/dumbbell_bulgariansquat.py", title="Bulgarian Split Squat Dumbbells", icon=":material/info:")
+pg_dumbbell_bulgariansquat = st.Page("views/dumbbell_bulgariansquat.py", title="Dumbbell Bulgarian Split Squat", icon=":material/info:")
 
 
 
 pg = st.navigation([pg_homepage, pg_workout_selection, 
                     pg_upper_exercise_selection, pg_lower_exercise_selection, 
-                    pg_barbell_benchpress, pg_barbell_shoulderpresse, pg_latpulldown, pg_deadlift, 
+                    pg_barbell_benchpress, pg_dumbbell_shoulderpress, pg_latpulldown, pg_barbell_deadlift, 
                     pg_barbell_squat, pg_dumbbell_bulgariansquat])
 pg.run()

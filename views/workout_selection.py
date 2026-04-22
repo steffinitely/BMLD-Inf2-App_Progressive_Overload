@@ -1,40 +1,24 @@
-# ------------------------
-# SPLIT AUSWAHL
-# ------------------------
-elif st.session_state.page == "split":
-    st.title("Wähle deinen Split")
+import streamlit as st
 
-    st.button("Oberkörper", on_click=go_to, args=("oberkoerper",))
-    st.button("Unterkörper", on_click=go_to, args=("unterkoerper",))
+st.title("🏋️ Wähle deinen Split")
 
-# ------------------------
-# ÜBUNGSLISTE
-# ------------------------
-elif st.session_state.page == "oberkoerper":
-    st.title("Oberkörper")
+st.markdown("""
+Trainierst du heute Ober- oder Unterkörper?
+""")
 
-    if st.button("Übung 1"):
-        st.session_state.exercise = "Übung 1"
-        go_to("exercise")
+st.divider()
 
-    if st.button("Übung 2"):
-        st.session_state.exercise = "Übung 2"
-        go_to("exercise")
+col1, col2 = st.columns(2)
 
-    if st.button("Zurück"):
-        go_to("split")
+with col1:
+    if st.button("💪 Oberkörper Übungen", use_container_width=True):
+        st.switch_page("views/upper_exercise_selection.py")
 
+with col2:
+    if st.button("🦵 Unterkörper Übungen", use_container_width=True):
+        st.switch_page("views/lower_exercise_selection.py")
 
-elif st.session_state.page == "unterkoerper":
-    st.title("Unterkörper")
+st.divider()
 
-    if st.button("Übung 1"):
-        st.session_state.exercise = "Übung 1"
-        go_to("exercise")
-
-    if st.button("Übung 2"):
-        st.session_state.exercise = "Übung 2"
-        go_to("exercise")
-
-    if st.button("Zurück"):
-        go_to("split")
+if st.button("← Zurück zur Startseite", use_container_width=True):
+    st.switch_page("views/homepage.py")
