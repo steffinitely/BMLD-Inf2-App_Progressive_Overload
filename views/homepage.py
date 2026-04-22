@@ -24,49 +24,14 @@ def go_to(page):
 if st.session_state.page == "home":
     st.title("🏋️ Progressive Overload")
 
+
+
     st.button("Log In", on_click=go_to, args=("login",))
     st.button("Sign Up", on_click=go_to, args=("signup",))
-    st.button("Info", on_click=go_to, args=("info",))
 
+    # ------------------------
+# Home SCREEN
 # ------------------------
-# SIGN UP
-# ------------------------
-elif st.session_state.page == "signup":
-    st.title("Sign Up")
-
-    name = st.text_input("Name")
-    email = st.text_input("E-Mail")
-    password = st.text_input("Passwort", type="password")
-
-    if st.button("Registrieren"):
-        st.success("Account erstellt (Dummy)")
-        go_to("login")
-
-    if st.button("⬅️ Zurück zur Home"):
-         go_to("home")
-
-
-# ------------------------
-# LOGIN
-# ------------------------
-elif st.session_state.page == "login":
-    st.title("Log In")
-
-    username = st.text_input("Username")
-    password = st.text_input("Passwort", type="password")
-
-    if st.button("Einloggen"):
-        st.success("Erfolgreich eingeloggt (Dummy)")
-        go_to("split")
-    
-    if st.button("⬅️ Zurück zur Home"):
-        go_to("home")
-
-
-# ------------------------
-# INFO SCREEN
-# ------------------------
-elif st.session_state.page == "info":
     st.title("📘 Was ist Progressive Overload?")
 
     st.markdown("""
@@ -110,6 +75,41 @@ Wenn du deine Gewichte trackst und dich regelmäßig steigerst, setzt du den opt
 """)
 
     st.button("Zurück", on_click=go_to, args=("home",))
+
+
+# ------------------------
+# SIGN UP
+# ------------------------
+elif st.session_state.page == "signup":
+    st.title("Sign Up")
+
+    name = st.text_input("Name")
+    email = st.text_input("E-Mail")
+    password = st.text_input("Passwort", type="password")
+
+    if st.button("Registrieren"):
+        st.success("Account erstellt (Dummy)")
+        go_to("login")
+
+    if st.button("⬅️ Zurück zur Home"):
+         go_to("home")
+
+
+# ------------------------
+# LOGIN
+# ------------------------
+elif st.session_state.page == "login":
+    st.title("Log In")
+
+    username = st.text_input("Username")
+    password = st.text_input("Passwort", type="password")
+
+    if st.button("Einloggen"):
+        st.success("Erfolgreich eingeloggt (Dummy)")
+        go_to("split")
+    
+    if st.button("⬅️ Zurück zur Home"):
+        go_to("home")
 
 # ------------------------
 # SPLIT AUSWAHL
