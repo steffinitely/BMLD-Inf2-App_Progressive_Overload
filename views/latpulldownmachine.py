@@ -1,8 +1,14 @@
 import streamlit as st
+import pandas as pd
+import plotly.graph_objects as go
 from functions.progression import calculate_progression, calculate_training_volume, get_last_entry
+from datetime import datetime
 
 if "training_mode" not in st.session_state:
     st.session_state.training_mode = False
+
+if "latpulldown_workouts" not in st.session_state:
+    st.session_state.latpulldown_workouts = []
 
 st.title("🏋️ Lat Pulldown")
 
@@ -19,7 +25,39 @@ st.divider()
 
 if not st.session_state.training_mode:
     st.subheader("📊 Deine Fortschritte")
-    st.info("Hier werden deine letzten Trainings angezeigt...")
+    
+    if st.session_state.latpulldown_workouts:
+        # Pandas Tabelle mit letzten Trainings
+        df = pd.DataFrame(st.session_state.latpulldown_workouts)
+        df = df[["datum", "gewicht", "wiederholungen", "sätze", "schwierigkeit"]].copy()
+        df = df.sort_values("datum", ascending=False).head(10)
+        
+        st.dataframe(df, use_container_width=True, hide_index=True)
+        
+        # Graph mit Gewichtsverlauf
+        df_sorted = df.sort_values("datum", ascending=True)
+        
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=df_sorted["datum"],
+            y=df_sorted["gewicht"],
+            mode='lines+markers',
+            name='Gewicht (kg)',
+            line=dict(color='#1f77b4', width=3),
+            marker=dict(size=8)
+        ))
+        
+        fig.update_layout(
+            title="Gewichtsverlauf",
+            xaxis_title="Datum",
+            yaxis_title="Gewicht (kg)",
+            hovermode='x unified',
+            height=400
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.info("Keine Trainings vorhanden. Starten Sie ein neues Training!")
     
     st.divider()
     
@@ -42,12 +80,27 @@ else:
     with col3:
         sets = st.number_input("Sätze", min_value=1, step=1)
     
+    # Schwierigkeits-Rating
+    difficulty = st.select_slider(
+        "Wie hat sich die Übung angefühlt?",
+        options=["Sehr einfach", "Einfach", "Gut", "Schwierig", "Sehr schwierig"],
+        value="Gut"
+    )
+    
     st.divider()
     
     col1, col2 = st.columns(2)
     with col1:
         if st.button("✅ Speichern", use_container_width=True):
-            st.success(f"✓ Training gespeichert: {weight}kg x {reps} Reps x {sets} Sets")
+            workout = {
+                "datum": datetime.now().strftime("%d.%m.%Y %H:%M"),
+                "gewicht": weight,
+                "wiederholungen": reps,
+                "sätze": sets,
+                "schwierigkeit": difficulty
+            }
+            st.session_state.latpulldown_workouts.append(workout)
+            st.success(f"✓ Training gespeichert: {weight}kg x {reps} Reps x {sets} Sets - {difficulty}")
             st.session_state.training_mode = False
             st.rerun()
     with col2:
