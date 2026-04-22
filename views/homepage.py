@@ -37,7 +37,7 @@ if st.session_state.page == "home":
     st.markdown("""
 **Progressive Overload** bedeutet, dass du dein Training systematisch steigerst, um stärker zu werden und Fortschritt zu erzielen.
 
-Ohne Steigerung passt sich dein Körper nicht an.
+Ohne Steigerung passt sich dein Körper nicht an. Steigerung kann durch folgende Faktoren erreicht werden:
 """)
 
     st.info("""
