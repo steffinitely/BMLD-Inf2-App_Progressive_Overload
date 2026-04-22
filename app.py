@@ -26,11 +26,12 @@ pg_latpulldown = st.Page("views/latpulldownmachine.py", title="Lat Pulldown", ic
 pg_barbell_deadlift = st.Page("views/barbell_deadlift.py", title="Barbell Deadlift", icon=":material/info:")
 pg_barbell_squat = st.Page("views/barbell_squat.py", title="Barbell Squat", icon=":material/info:")
 pg_dumbbell_bulgariansquat = st.Page("views/dumbbell_bulgariansquat.py", title="Dumbbell Bulgarian Split Squat", icon=":material/info:")
+pg_statistik = st.Page("views/statistik.py", title="Statistiken", icon=":material/analytics:")
 
 
 
-pg = st.navigation([pg_homepage, pg_workout_selection, 
-                    pg_upper_exercise_selection, pg_lower_exercise_selection, 
-                    pg_barbell_benchpress, pg_dumbbell_shoulderpress, pg_latpulldown, pg_barbell_deadlift, 
-                    pg_barbell_squat, pg_dumbbell_bulgariansquat])
+pg = st.navigation([pg_homepage, pg_workout_selection,
+                    pg_upper_exercise_selection, pg_lower_exercise_selection,
+                    pg_barbell_benchpress, pg_dumbbell_shoulderpress, pg_latpulldown, pg_barbell_deadlift,
+                    pg_barbell_squat, pg_dumbbell_bulgariansquat, pg_statistik])
 pg.run()
