@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from functions.progression import calculate_progression, calculate_training_volume, get_last_entry, get_suggested_weight
+from utils.data_manager import DataManager
 from datetime import datetime
 
 if "training_mode" not in st.session_state:
@@ -97,14 +98,35 @@ else:
     col1, col2 = st.columns(2)
     with col1:
         if st.button("✅ Speichern", use_container_width=True):
-            workout = {
+            # Erstelle neues Workout-Record mit exercise Feld
+            workout_record = {
+                "exercise": "Barbell Squat",
+                "weight": weight,
+                "reps": reps,
+                "sets": sets,
+                "difficulty": difficulty
+            }
+            
+            # Aktualisiere globales DataFrame
+            st.session_state['data_df'] = DataManager.append_record(
+                st.session_state['data_df'],
+                workout_record
+            )
+            
+            # Speichere zu WebDAV/Dateisystem
+            data_manager = DataManager()
+            data_manager.save_user_data(st.session_state['data_df'], 'data.csv')
+            
+            # Aktualisiere auch lokale Liste für Anzeige
+            local_workout = {
                 "datum": datetime.now().strftime("%d.%m.%Y %H:%M"),
                 "gewicht": weight,
                 "wiederholungen": reps,
                 "sätze": sets,
                 "schwierigkeit": difficulty
             }
-            st.session_state.squat_workouts.append(workout)
+            st.session_state.squat_workouts.append(local_workout)
+            
             st.success(f"✓ Training gespeichert: {weight}kg x {reps} Reps x {sets} Sets - {difficulty}")
             st.session_state.training_mode = False
             st.rerun()
