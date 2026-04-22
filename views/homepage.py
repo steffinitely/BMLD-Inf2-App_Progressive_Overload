@@ -74,7 +74,6 @@ Wenn du deine Gewichte trackst und dich regelmäßig steigerst, setzt du den opt
 👉 Einfach strukturiert trainieren und stärker werden.
 """)
 
-    st.button("Zurück", on_click=go_to, args=("home",))
 
 
 # ------------------------
