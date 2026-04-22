@@ -20,17 +20,17 @@ pg_homepage = st.Page("views/homepage.py", title="Home", icon=":material/home:",
 pg_workout_selection = st.Page("views/workout_selection.py", title="Workout Auswahl", icon=":material/info:")
 pg_upper_exercise_selection = st.Page("views/upper_exercise_selection.py", title="Oberkörper Übungen", icon=":material/info:")
 pg_lower_exercise_selection = st.Page("views/lower_exercise_selection.py", title="Unterkörper Übungen", icon=":material/info:")
-pg_upper_e1 = st.Page("views/upper_e1.py", title="Oberkörper Übung 1", icon=":material/info:")
-pg_upper_e2 = st.Page("views/upper_e2.py", title="Oberkörper Übung 2", icon=":material/info:")
-pg_upper_e3 = st.Page("views/upper_e3.py", title="Oberkörper Übung 3", icon=":material/info:")
-pg_lower_e1 = st.Page("views/lower_e1.py", title="Unterkörper Übung 1", icon=":material/info:")
-pg_lower_e2 = st.Page("views/lower_e2.py", title="Unterkörper Übung 2", icon=":material/info:")
-pg_lower_e3 = st.Page("views/lower_e3.py", title="Unterkörper Übung 3", icon=":material/info:")
+pg_barbell_benchpress = st.Page("views/barbell_benchpress.py", title="Barbell Benchpress", icon=":material/info:")
+pg_barbell_shoulderpresse = st.Page("views/barbell_shoulderpress.py", title="Barbell Shoulder Press", icon=":material/info:")
+pg_latpulldown = st.Page("views/latpulldown.py", title="Lat Pulldown", icon=":material/info:")
+pg_deadlift = st.Page("views/deadlift.py", title="Deadlift", icon=":material/info:")
+pg_barbell_squat = st.Page("views/barbell_squat.py", title="Barbell Squat", icon=":material/info:")
+pg_dumbbell_bulgariansquat = st.Page("views/dumbbell_bulgariansquat.py", title="Bulgarian Split Squat Dumbbells", icon=":material/info:")
 
 
 
 pg = st.navigation([pg_homepage, pg_workout_selection, 
                     pg_upper_exercise_selection, pg_lower_exercise_selection, 
-                    pg_upper_e1, pg_upper_e2, pg_upper_e3, pg_lower_e1, 
-                    pg_lower_e2, pg_lower_e3])
+                    pg_barbell_benchpress, pg_barbell_shoulderpresse, pg_latpulldown, pg_deadlift, 
+                    pg_barbell_squat, pg_dumbbell_bulgariansquat])
 pg.run()
