@@ -1,7 +1,7 @@
 import streamlit as st
 from functions.progression import calculate_progression, calculate_training_volume, get_last_entry
 
-st.set_page_config(page_title="Progressive Overload")
+#st.set_page_config(page_title="Progressive Overload")
 
 # ------------------------
 # Session State initialisieren
