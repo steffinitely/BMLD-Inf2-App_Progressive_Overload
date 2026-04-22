@@ -75,41 +75,6 @@ Wenn du deine Gewichte trackst und dich regelmäßig steigerst, setzt du den opt
 """)
 
 
-
-# ------------------------
-# SIGN UP
-# ------------------------
-elif st.session_state.page == "signup":
-    st.title("Sign Up")
-
-    name = st.text_input("Name")
-    email = st.text_input("E-Mail")
-    password = st.text_input("Passwort", type="password")
-
-    if st.button("Registrieren"):
-        st.success("Account erstellt (Dummy)")
-        go_to("login")
-
-    if st.button("⬅️ Zurück zur Home"):
-         go_to("home")
-
-
-# ------------------------
-# LOGIN
-# ------------------------
-elif st.session_state.page == "login":
-    st.title("Log In")
-
-    username = st.text_input("Username")
-    password = st.text_input("Passwort", type="password")
-
-    if st.button("Einloggen"):
-        st.success("Erfolgreich eingeloggt (Dummy)")
-        go_to("split")
-    
-    if st.button("⬅️ Zurück zur Home"):
-        go_to("home")
-
 # ------------------------
 # SPLIT AUSWAHL
 # ------------------------
