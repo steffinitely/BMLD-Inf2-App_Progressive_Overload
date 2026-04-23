@@ -5,12 +5,6 @@ from functions.progression import calculate_progression, calculate_training_volu
 from utils.data_manager import DataManager
 from datetime import datetime
 
-if "training_mode" not in st.session_state:
-    st.session_state.training_mode = False
-
-if "shoulderpress_workouts" not in st.session_state:
-    st.session_state.shoulderpress_workouts = []
-
 st.title("🏋️ Dumbbell Shoulder Press")
 
 st.markdown("""
@@ -24,24 +18,29 @@ Dumbbell Shoulder Press ist eine ideale Übung für die Entwicklung von Schulter
 
 st.divider()
 
-if not st.session_state.training_mode:
-    st.subheader("📊 Deine Fortschritte")
-    
-    if st.session_state.shoulderpress_workouts:
-        # Pandas Tabelle mit letzten Trainings
-        df = pd.DataFrame(st.session_state.shoulderpress_workouts)
-        df = df[["datum", "gewicht", "wiederholungen", "sätze", "schwierigkeit"]].copy()
-        df = df.sort_values("datum", ascending=False).head(10)
+# Fortschritte aus persistentem data_df laden
+data_df = st.session_state.get('data_df', pd.DataFrame())
+exercise_name = "Dumbbell Shoulder Press"
+
+if not data_df.empty and "exercise" in data_df.columns:
+    exercise_data = data_df[data_df['exercise'] == exercise_name].copy()
+    if not exercise_data.empty:
+        st.subheader("📊 Deine Fortschritte")
         
-        st.dataframe(df, use_container_width=True, hide_index=True)
+        # Tabelle mit letzten Trainings
+        df_display = exercise_data[["timestamp", "weight", "reps", "sets", "difficulty"]].copy()
+        df_display = df_display.sort_values("timestamp", ascending=False).head(10)
+        df_display.columns = ["Datum", "Gewicht (kg)", "Wiederholungen", "Sätze", "Schwierigkeit"]
+        
+        st.dataframe(df_display, use_container_width=True, hide_index=True)
         
         # Graph mit Gewichtsverlauf
-        df_sorted = df.sort_values("datum", ascending=True)
+        df_graph = exercise_data.sort_values("timestamp", ascending=True)
         
         fig = go.Figure()
         fig.add_trace(go.Scatter(
-            x=df_sorted["datum"],
-            y=df_sorted["gewicht"],
+            x=df_graph["timestamp"],
+            y=df_graph["weight"],
             mode='lines+markers',
             name='Gewicht (kg)',
             line=dict(color='#1f77b4', width=3),
@@ -58,45 +57,38 @@ if not st.session_state.training_mode:
         
         st.plotly_chart(fig, use_container_width=True)
     else:
-        st.info("Keine Trainings vorhanden. Starten Sie ein neues Training!")
-    
-    st.divider()
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("➕ Neues Training", use_container_width=True):
-            st.session_state.training_mode = True
-            st.rerun()
-    with col2:
-        if st.button("← Zurück", use_container_width=True):
-            st.switch_page("views/upper_exercise_selection.py")
+        st.info("Keine Trainings vorhanden. Erfassen Sie ein neues Training!")
 else:
-    st.subheader("➕ Neues Training erfassen")
-    
-    # Berechne vorgeschlagenes Gewicht basierend auf letztem Training
-    data_df = st.session_state.get('data_df', pd.DataFrame())
-    suggested_weight = get_suggested_weight("Dumbbell Shoulder Press", data_df)
-    
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        weight = st.number_input("Gewicht (kg)", min_value=0.0, step=0.5, format="%.1f", value=suggested_weight)
-    with col2:
-        reps = st.number_input("Wiederholungen", min_value=1, step=1)
-    with col3:
-        sets = st.number_input("Sätze", min_value=1, step=1)
-    
-    # Schwierigkeits-Rating
-    difficulty = st.select_slider(
-        "Wie hat sich die Übung angefühlt?",
-        options=["Sehr einfach", "Einfach", "Gut", "Schwierig", "Sehr schwierig"],
-        value="Gut"
-    )
-    
-    st.divider()
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("✅ Speichern", use_container_width=True):
+    st.info("Keine Trainings vorhanden. Erfassen Sie ein neues Training!")
+
+st.divider()
+
+# Training-Formular immer sichtbar
+st.subheader("➕ Neues Training erfassen")
+
+# Berechne vorgeschlagenes Gewicht basierend auf letztem Training
+suggested_weight = get_suggested_weight(exercise_name, data_df)
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    weight = st.number_input("Gewicht (kg)", min_value=0.0, step=0.5, format="%.1f", value=suggested_weight)
+with col2:
+    reps = st.number_input("Wiederholungen", min_value=1, step=1)
+with col3:
+    sets = st.number_input("Sätze", min_value=1, step=1)
+
+# Schwierigkeits-Rating
+difficulty = st.select_slider(
+    "Wie hat sich die Übung angefühlt?",
+    options=["Sehr einfach", "Einfach", "Gut", "Schwierig", "Sehr schwierig"],
+    value="Gut"
+)
+
+st.divider()
+
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("✅ Speichern", use_container_width=True):
             # Erstelle neues Workout-Record mit exercise Feld
             workout_record = {
                 "exercise": "Dumbbell Shoulder Press",
@@ -116,20 +108,13 @@ else:
             data_manager = DataManager()
             data_manager.save_user_data(st.session_state['data_df'], 'data.csv')
             
-            # Aktualisiere auch lokale Liste für Anzeige
-            local_workout = {
-                "datum": datetime.now().strftime("%d.%m.%Y %H:%M"),
-                "gewicht": weight,
-                "wiederholungen": reps,
-                "sätze": sets,
-                "schwierigkeit": difficulty
-            }
-            st.session_state.shoulderpress_workouts.append(local_workout)
-            
             st.success(f"✓ Training gespeichert: {weight}kg x {reps} Reps x {sets} Sets - {difficulty}")
-            st.session_state.training_mode = False
             st.rerun()
     with col2:
         if st.button("❌ Abbrechen", use_container_width=True):
-            st.session_state.training_mode = False
             st.rerun()
+
+st.divider()
+
+if st.button("← Zurück zur Auswahl", use_container_width=True):
+    st.switch_page("views/upper_exercise_selection.py")
