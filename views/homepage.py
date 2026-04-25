@@ -1,5 +1,5 @@
 import streamlit as st
-from functions.progression import calculate_progression, calculate_training_volume, get_last_entry
+from functions.progression import calculate_training_volume, get_suggested_weight
 
 st.title("🏋️ Progressive Overload")
 

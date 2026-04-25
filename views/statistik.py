@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
-from functions.progression import calculate_progression, calculate_training_volume
 from datetime import datetime
+from functions.progression import calculate_training_volume, get_suggested_weight
 
 st.set_page_config(page_title="Statistiken", layout="wide")
 st.title("📊 Deine Trainingsstatistiken")

@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-from functions.progression import calculate_progression, calculate_training_volume, get_last_entry, get_suggested_weight
 from utils.data_manager import DataManager
 from datetime import datetime
+from functions.progression import calculate_training_volume, get_suggested_weight
 
 st.title("🏋️ Barbell Squat")
 
