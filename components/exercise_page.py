@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
+
 from functions.progression import get_suggested_weight
 
 
@@ -20,6 +21,41 @@ class ExercisePage:
         return self.data_df[
             self.data_df["exercise"].str.lower() == self.exercise_name.lower()
         ]
+
+    # =========================
+    # 🎯 TODAY RECOMMENDATION (NEW)
+    # =========================
+
+    def render_today_recommendation(self):
+        suggestion = get_suggested_weight(self.exercise_name, self.data_df)
+
+        weight = float(suggestion.get("weight", 0.0))
+        action = suggestion.get("action", "")
+        reason = suggestion.get("reason", "")
+        est_1rm = suggestion.get("estimated_1rm", 0)
+
+        st.subheader("🎯 Heute dein Training")
+
+        st.metric(
+            label="Empfohlenes Startgewicht",
+            value=f"{weight} kg"
+        )
+
+        # Coach Feedback
+        if action == "increase_weight":
+            st.success("💪 Heute kannst du steigern!")
+        elif action == "increase_reps":
+            st.info("🔁 Fokus: mehr Wiederholungen")
+        elif action == "repeat":
+            st.warning("➡️ Gewicht beibehalten")
+        elif action == "deload":
+            st.error("⚠️ Deload empfohlen")
+
+        # Zusatzinfo (1RM)
+        if est_1rm:
+            st.caption(f"📈 Geschätztes 1RM: {round(est_1rm, 1)} kg")
+
+        st.divider()
 
     # =========================
     # 📊 CHART
@@ -54,8 +90,13 @@ class ExercisePage:
         if df.empty:
             return
 
-        df_display = df[["timestamp", "weight", "reps", "sets", "difficulty"]].copy()
-        df_display = df_display.sort_values("timestamp", ascending=False).head(10)
+        df_display = df[[
+            "timestamp", "weight", "reps", "sets", "difficulty"
+        ]].copy()
+
+        df_display = df_display.sort_values(
+            "timestamp", ascending=False
+        ).head(10)
 
         df_display.columns = [
             "Datum", "Gewicht (kg)", "Reps", "Sets", "Schwierigkeit"
@@ -71,7 +112,7 @@ class ExercisePage:
         suggestion = get_suggested_weight(self.exercise_name, self.data_df)
         suggested_weight = float(suggestion.get("weight", 0.0))
 
-        st.subheader("➕ Neues Training")
+        st.subheader("➕ Neues Training erfassen")
 
         col1, col2, col3 = st.columns(3)
 
@@ -85,14 +126,30 @@ class ExercisePage:
             )
 
         with col2:
-            reps = st.number_input("Reps", min_value=1, step=1, value=8)
+            reps = st.number_input(
+                "Reps",
+                min_value=1,
+                step=1,
+                value=8
+            )
 
         with col3:
-            sets = st.number_input("Sets", min_value=1, step=1, value=3)
+            sets = st.number_input(
+                "Sets",
+                min_value=1,
+                step=1,
+                value=3
+            )
 
         difficulty = st.select_slider(
             "Schwierigkeit",
-            options=["Sehr einfach", "Einfach", "Gut", "Schwierig", "Sehr schwierig"],
+            options=[
+                "Sehr einfach",
+                "Einfach",
+                "Gut",
+                "Schwierig",
+                "Sehr schwierig"
+            ],
             value="Gut"
         )
 
@@ -103,7 +160,6 @@ class ExercisePage:
     # =========================
 
     def save(self, weight, reps, sets, difficulty):
-        import pandas as pd
         from utils.data_manager import DataManager
 
         record = {
@@ -121,7 +177,10 @@ class ExercisePage:
 
         st.session_state["data_df"] = self.data_df
 
-        DataManager().save_user_data(self.data_df, "data.csv")
+        DataManager().save_user_data(
+            self.data_df,
+            "data.csv"
+        )
 
     # =========================
     # 🚀 MAIN RENDER
@@ -129,6 +188,9 @@ class ExercisePage:
 
     def render(self):
         st.title(f"🏋️ {self.exercise_name}")
+
+        # 🔥 NEW: Coach Recommendation zuerst
+        self.render_today_recommendation()
 
         df = self.get_exercise_data()
 
@@ -146,11 +208,11 @@ class ExercisePage:
         col1, col2 = st.columns(2)
 
         with col1:
-            if st.button("✅ Speichern"):
+            if st.button("✅ Speichern", use_container_width=True):
                 self.save(weight, reps, sets, difficulty)
                 st.success("Gespeichert!")
                 st.rerun()
 
         with col2:
-            if st.button("❌ Abbrechen"):
+            if st.button("❌ Abbrechen", use_container_width=True):
                 st.rerun()
