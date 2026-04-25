@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-
 from functions.progression import get_suggested_weight
 
 
