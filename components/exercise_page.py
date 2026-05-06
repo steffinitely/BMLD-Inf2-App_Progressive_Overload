@@ -52,9 +52,7 @@ class ExercisePage:
 
         # Zusatzinfo (1RM)
         if est_1rm:
-            st.caption(
-                label="Challenge: Probier mal Powerlifting mit deinem 1RM!",
-                value=f"📈 Geschätztes 1RM: {round(est_1rm, 1)} kg"
+            st.caption(f"📈 Geschätztes 1RM: {round(est_1rm, 1)} kg"
             )
 
         st.divider()
