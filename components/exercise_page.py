@@ -54,7 +54,8 @@ class ExercisePage:
         if est_1rm:
             st.caption(
                 title="Challenge: Probier mal Powerlifting mit deinem 1RM!",
-                body=f"📈 Geschätztes 1RM: {round(est_1rm, 1)} kg")
+                body=f"📈 Geschätztes 1RM: {round(est_1rm, 1)} kg"
+            )
 
         st.divider()
 
