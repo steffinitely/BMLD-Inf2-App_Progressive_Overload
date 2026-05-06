@@ -51,9 +51,11 @@ class ExercisePage:
             st.error("⚠️ Deload empfohlen")
 
         # Zusatzinfo (1RM)
-        st.subheader("Challenge: Probier mal Powerlifting-Style mit 1RM!")
         if est_1rm:
-            st.caption(f"📈 Geschätztes 1RM: {round(est_1rm, 1)} kg")
+            st.caption(
+                title="Challenge: Probier mal Powerlifting mit 1RM!",
+                body=f"📈 Geschätztes 1RM: {round(est_1rm, 1)} kg"
+            )
 
         st.divider()
 
