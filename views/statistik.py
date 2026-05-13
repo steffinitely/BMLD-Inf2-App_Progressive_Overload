@@ -112,7 +112,8 @@ with tab1:
         # Tabelle mit letzten Einträgen
         st.subheader("Letzte 10 Trainings")
         df_display = df_exercise[['datum', 'weight', 'reps', 'sets', 'volume']].copy() if 'datum' in df_exercise.columns else df_exercise[['timestamp', 'weight', 'reps', 'sets', 'volume']].copy()
-        df_display = df_display.tail(10).sort_values(df_display.index[0], ascending=False)
+        sort_col = 'datum' if 'datum' in df_display.columns else 'timestamp'
+        df_display = df_display.tail(10).sort_values(sort_col, ascending=False)
         st.dataframe(df_display, use_container_width=True, hide_index=True)
     else:
         st.warning(f"Keine Daten für die Übung '{selected_exercise}' vorhanden.")
