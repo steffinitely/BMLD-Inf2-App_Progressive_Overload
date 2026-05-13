@@ -10,9 +10,9 @@ Ohne eine Steigerung passt sich dein Körper nicht an. Diese Steigerung kann dur
 """)
 
 st.info("""
-- mehr Gewicht  
-- mehr Wiederholungen  
-- mehr Sätze  
+- Mehr Gewicht  
+- Mehr Wiederholungen  
+- Mehr Sätze  
 """)
 
 st.markdown("""
@@ -28,10 +28,10 @@ st.markdown("""
 """)
 
 st.info("""
-- speichert dein letztes Training  
+- Speichert dein letztes Training  
 - Empfiehlt dir Gewicht / Wiederholungen basierend auf deinem Feedback
-- berechnet dein nächstes Gewicht (+2.5%)  
-- zeigt dir deinen Fortschritt in einer Tabelle und Grafik 
+- Berechnet dein nächstes Gewicht (+2.5%)  
+- Zeigt dir deinen Fortschritt in einer Tabelle und Grafik 
 """)
 
 st.markdown("""
