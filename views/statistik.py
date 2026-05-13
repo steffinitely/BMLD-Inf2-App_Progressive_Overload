@@ -228,7 +228,7 @@ with tab3:
             x='Übung',
             y='Fortschritt',
             color='Fortschritt',
-            color_continuous_scale=['red', 'green'],
+            color_continuous_scale=['blue', 'yellow', 'green'],
             title="Gewichtszunahme seit Anfang (%)",
             labels={'Fortschritt': 'Fortschritt (%)'}
         )
