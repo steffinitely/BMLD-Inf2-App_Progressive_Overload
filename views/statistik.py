@@ -86,10 +86,13 @@ with tab1:
         st.divider()
         
         # Liniendiagramm für Gewichtsverlauf
+        df_exercise['cumulative_volume'] = df_exercise['volume'].cumsum()
+        x_values = df_exercise['timestamp'] if 'timestamp' in df_exercise.columns else df_exercise['datum']
+
         fig = go.Figure()
         
         fig.add_trace(go.Scatter(
-            x=df_exercise['timestamp'] if 'timestamp' in df_exercise.columns else df_exercise['datum'],
+            x=x_values,
             y=df_exercise['weight'],
             mode='lines+markers',
             name='Gewicht (kg)',
@@ -97,11 +100,28 @@ with tab1:
             marker=dict(size=8),
             hovertemplate='<b>%{x}</b><br>Gewicht: %{y:.1f} kg<extra></extra>'
         ))
+
+        fig.add_trace(go.Scatter(
+            x=x_values,
+            y=df_exercise['cumulative_volume'],
+            mode='lines+markers',
+            name='Kumulatives Volumen',
+            line=dict(color='#ff7f0e', width=3, dash='dash'),
+            marker=dict(size=8),
+            hovertemplate='<b>%{x}</b><br>Volumen: %{y:.0f} kg×Reps×Sets<extra></extra>',
+            yaxis='y2'
+        ))
         
         fig.update_layout(
             title=f"Gewichtsverlauf: {selected_exercise}",
             xaxis_title="Datum",
             yaxis_title="Gewicht (kg)",
+            yaxis2=dict(
+                title='Kumulatives Volumen',
+                overlaying='y',
+                side='right',
+                showgrid=False
+            ),
             hovermode='x unified',
             height=450,
             template='plotly_white'
