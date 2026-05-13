@@ -242,11 +242,11 @@ with tab4:
     st.subheader("Alle Trainingsdaten")
     
     # Sortieren und Anzeigen
-    if 'timestamp' in df.columns:
-        df_display = df.sort_values('timestamp', ascending=False)
+    if 'Datum' in df.columns:
+        df_display = df.sort_values('Datum', ascending=False)
         display_cols = ['Datum', 'Übung', 'Gewicht (kg)', 'Wiederholungen', 'Sets', 'Gesamtvolumen']
     else:
-        df_display = df.sort_values('datum', ascending=False)
+        df_display = df.sort_values('Datum', ascending=False)
         display_cols = ['Datum', 'Übung', 'Gewicht (kg)', 'Wiederholungen', 'Sets', 'Gesamtvolumen']
     
     # Nur verfügbare Spalten anzeigen
