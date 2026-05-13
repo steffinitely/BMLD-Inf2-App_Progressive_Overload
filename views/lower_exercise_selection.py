@@ -3,7 +3,7 @@ import streamlit as st
 st.title("🦵 Unterkörper Übungen")
 
 st.markdown("""
-Wähle eine Unterkörper Übung zum Trainieren und Trackieren.
+Wähle eine Unterkörper Übung zum Trainieren und Tracken.
 """)
 
 st.divider()

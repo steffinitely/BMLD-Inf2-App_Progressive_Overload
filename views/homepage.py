@@ -4,9 +4,9 @@ from functions.progression import calculate_training_volume, get_suggested_weigh
 st.title("🏋️ Progressive Overload")
 
 st.markdown("""
-**Progressive Overload** bedeutet, dass du dein Training systematisch steigerst, um stärker zu werden und Fortschritt zu erzielen.
+**Progressive Overload** bedeutet, dass du dein Training systematisch steigerst, um stärker zu werden und Fortschritte zu erzielen.
 
-Ohne Steigerung passt sich dein Körper nicht an. Steigerung kann durch folgende Faktoren erreicht werden:
+Ohne eine Steigerung passt sich dein Körper nicht an. Diese Steigerung kann durch folgende Faktoren erreicht werden:
 """)
 
 st.info("""
@@ -30,7 +30,7 @@ st.markdown("""
 st.info("""
 - speichert dein letztes Training  
 - berechnet dein nächstes Gewicht (+2.5%)  
-- zeigt dir deinen Fortschritt  
+- zeigt dir deinen Fortschritt in einer Tabelle und Grafik 
 """)
 
 st.markdown("""
@@ -40,7 +40,7 @@ st.markdown("""
 - Kein Raten mehr  
 - Klare Progression  
 
-👉 Einfach strukturiert trainieren und stärker werden.
+👉 Einfach strukturiert trainieren und stärker werden ohne grosse Anstrengung.
 """)
 
 st.divider()

@@ -3,7 +3,7 @@ import streamlit as st
 st.title("💪 Oberkörper Übungen")
 
 st.markdown("""
-Wähle eine Oberkörper Übung zum Trainieren und Trackieren.
+Wähle eine Oberkörper Übung zum Trainieren und Tracken.
 """)
 
 st.divider()

@@ -33,7 +33,7 @@ class ExercisePage:
         reason = suggestion.get("reason", "")
         est_1rm = suggestion.get("estimated_1rm", 0)
 
-        st.subheader("🎯 Heute dein Training")
+        st.subheader("🎯 Dein heutiges Training")
 
         st.metric(
             label="Empfohlenes Startgewicht",
@@ -48,7 +48,7 @@ class ExercisePage:
         elif action == "repeat":
             st.warning("➡️ Gewicht beibehalten")
         elif action == "deload":
-            st.error("⚠️ Deload empfohlen")
+            st.error("⚠️ Gewichtsreduktion empfohlen")
 
         # Zusatzinfo (1RM)
         if est_1rm:
