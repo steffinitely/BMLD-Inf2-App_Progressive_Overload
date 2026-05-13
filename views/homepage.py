@@ -29,6 +29,7 @@ st.markdown("""
 
 st.info("""
 - speichert dein letztes Training  
+- Empfiehlt dir Gewicht / Wiederholungen basierend auf deinem Feedback
 - berechnet dein nächstes Gewicht (+2.5%)  
 - zeigt dir deinen Fortschritt in einer Tabelle und Grafik 
 """)
