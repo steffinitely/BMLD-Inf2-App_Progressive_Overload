@@ -1,3 +1,3 @@
-from components.exercise_page import ExercisePage
+from functions.exercise_page import ExercisePage
 
 ExercisePage("Dumbbell Shoulder Press").render()
