@@ -7,7 +7,7 @@ Ziel des Nutzertests war es, zu überprüfen, ob die fertige App im Alltag sinnv
 
 ## Testperson
 - **Name:** Marie  
-- **Alter:** 24  
+- **Alter:** 34 
 - **Trainingserfahrung:** Fortgeschritten  
 - **Trainingshäufigkeit:** 4–5x pro Woche im Gym  
 - **Technische Erfahrung:** Gute Smartphone- und App-Kenntnisse  
