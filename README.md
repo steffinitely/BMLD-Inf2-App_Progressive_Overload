@@ -1,5 +1,11 @@
 # Progressive Overload App
 
+## Die App
+
+Link zur App: https://bmld-inf2-appprogressiveoverload.streamlit.app
+
+---
+
 ## Entwickler
 
 - Leah Talary (talarlea@students.zhaw.ch)  
